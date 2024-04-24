@@ -12,7 +12,7 @@ const Sidebar = () => {
     <aside className="side-bar">
       <div className="flex size-full flex-col gap-4">
         <Link href="/" className="side-bar-logo">
-          <Image src="/assets/images/logo.svg" alt="Smart Canvas Logo" width={180} height={28} />
+          <Image src="/assets/images/logo-text.svg" alt="Smart Canvas Logo" width={180} height={28} />
         </Link>
 
         <nav className="side-bar-nav">
