@@ -1,4 +1,4 @@
-export const Links = [
+export const links = [
   {
     label: "Home",
     route: "/",
