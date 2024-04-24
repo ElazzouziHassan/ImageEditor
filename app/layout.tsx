@@ -13,7 +13,7 @@ const IBMPlex = IBM_Plex_Sans(
 );
 
 export const metadata: Metadata = {
-  title: "IMG Editor",
+  title: " Smart Canvas | AI Image Editor",
   description: "AI based image editor",
 };
 
