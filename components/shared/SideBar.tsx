@@ -23,7 +23,7 @@ const Sidebar = () => {
 
                 return (
                   <li key={link.route} className={`side-bar-nav_element group ${
-                    isActive ? 'bg-purple-gradient text-white' : 'text-gray-700'
+                    isActive ? 'bg-purple-gradient text-black' : 'text-gray-700'
                   }`}>
                     <Link className="side-bar-link" href={link.route}>
                       <Image 
@@ -39,34 +39,6 @@ const Sidebar = () => {
                 )
               })}
               </ul>
-
-
-            <ul className="side-bar-nav_elements">
-              {navLinks.slice(6).map((link) => {
-                const isActive = link.route === pathname
-
-                return (
-                  <li key={link.route} className={`side-bar-nav_element group ${
-                    isActive ? 'bg-purple-gradient text-white' : 'text-gray-700'
-                  }`}>
-                    <Link className="side-bar-link" href={link.route}>
-                      <Image 
-                        src={link.icon}
-                        alt="logo"
-                        width={24}
-                        height={24}
-                        className={`${isActive && 'brightness-200'}`}
-                      />
-                      {link.label}
-                    </Link>
-                  </li>
-                )
-              })}
-
-              <li className="flex-center cursor-pointer gap-2 p-4">
-                <UserButton afterSignOutUrl='/' showName />
-              </li>
-            </ul>
           </SignedIn>
         </nav>
       </div>
