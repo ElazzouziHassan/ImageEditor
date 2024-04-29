@@ -2,42 +2,42 @@ export const navLinks = [
   {
     label: "Home",
     route: "/",
-    icon: "/assets/icons/home.svg",
+    icon: "",
   },
   {
     label: "Image Restore",
     route: "/editing/add/restore",
-    icon: "/assets/icons/image.svg",
+    icon: "",
   },
   {
     label: "Generative Fill",
     route: "/editing/add/fill",
-    icon: "/assets/icons/stars.svg",
+    icon: "",
   },
   {
     label: "Object Remove",
     route: "/editing/add/remove",
-    icon: "/assets/icons/scan.svg",
+    icon: "",
   },
   {
     label: "Object Recolor",
     route: "/editing/add/recolor",
-    icon: "/assets/icons/filter.svg",
+    icon: "",
   },
   {
     label: "Background Remove",
     route: "/editing/add/removeBackground",
-    icon: "/assets/icons/camera.svg",
+    icon: "",
   },
   {
     label: "Profile",
     route: "/profile",
-    icon: "/assets/icons/profile.svg",
+    icon: "",
   },
   {
     label: "Buy coins",
     route: "/coins",
-    icon: "/assets/icons/bag.svg",
+    icon: "",
   },
 ];
 
@@ -45,7 +45,7 @@ export const plans = [
   {
     _id: 1,
     name: "Free",
-    icon: "/assets/icons/free-plan.svg",
+    icon: "",
     price: 0,
     coins: 20,
     inclusions: [
@@ -70,7 +70,7 @@ export const plans = [
   {
     _id: 2,
     name: "Pro Package",
-    icon: "/assets/icons/free-plan.svg",
+    icon: "",
     price: 40,
     coins: 120,
     inclusions: [
@@ -95,7 +95,7 @@ export const plans = [
   {
     _id: 3,
     name: "Premium Package",
-    icon: "/assets/icons/free-plan.svg",
+    icon: "",
     price: 199,
     coins: 2000,
     inclusions: [
@@ -125,21 +125,21 @@ export const transformationTypes = {
     title: "Restore Image",
     subTitle: "Refine images by removing noise and imperfections",
     config: { restore: true },
-    icon: "image.svg",
+    icon: "",
   },
   removeBackground: {
     type: "removeBackground",
     title: "Background Remove",
     subTitle: "Removes the background of the image using AI",
     config: { removeBackground: true },
-    icon: "camera.svg",
+    icon: "",
   },
   fill: {
     type: "fill",
     title: "Generative Fill",
     subTitle: "Enhance an image's dimensions using AI outpainting",
     config: { fillBackground: true },
-    icon: "stars.svg",
+    icon: "",
   },
   remove: {
     type: "remove",
@@ -148,7 +148,7 @@ export const transformationTypes = {
     config: {
       remove: { prompt: "", removeShadow: true, multiple: true },
     },
-    icon: "scan.svg",
+    icon: "",
   },
   recolor: {
     type: "recolor",
@@ -157,7 +157,7 @@ export const transformationTypes = {
     config: {
       recolor: { prompt: "", to: "", multiple: true },
     },
-    icon: "filter.svg",
+    icon: "",
   },
 };
 
