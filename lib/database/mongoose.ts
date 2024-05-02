@@ -1,4 +1,4 @@
-import mongoose, {Mongoose, connection} from "mongoose";
+import mongoose, {Mongoose} from "mongoose";
 
 const MONGODB_URL = process.env.MONGODB_URL;
 
@@ -20,7 +20,7 @@ const connectToDB = async () => {
 
   cached.promise = cached.promise || mongoose.connect(
     MONGODB_URL,
-    // { DB_NAME:smartcanvas, bufferCommands:false }
+    { dbName:"smartcanvas", bufferCommands:false }
   );
 
   cached.connection = await cached.promise;
