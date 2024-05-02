@@ -8,7 +8,6 @@ const EditingSchema = new Schema({
   coins: { type: Number },
   buyer: { type: Schema.Types.ObjectId, ref: "User" },
 });
-
 const Editing = models?.Editing || model("Editing", EditingSchema);
 
 export default Editing;
