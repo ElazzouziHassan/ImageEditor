@@ -13,7 +13,7 @@ if( !cached ) {
   cached = (global as any).mongoose = { connection: null, promise: null }
 }
 
-const connectToDB = async () => {
+export const connectToDB = async () => {
   if (cached.connection) return cached.connection;
 
   if (!MONGODB_URL) throw new Error ("MongoDB URL error : URL Not Defined !");
