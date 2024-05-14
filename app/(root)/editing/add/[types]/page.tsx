@@ -1,8 +1,14 @@
+import Header from '@/components/shared/Header'
 import React from 'react'
 
 function AddEditsType() {
   return (
-    <div>AddEditsType</div>
+    <>
+      <Header 
+        title="title"
+        subtitle="sbutitle"
+      />
+    </>
   )
 }
 
