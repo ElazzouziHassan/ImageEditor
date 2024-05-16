@@ -54,12 +54,12 @@ function MobileNavBar() {
                         className={`${isActive && 'gradient-text'} p-18 flex whitespace-nowrap text-dark-700`}
                         key={link.route}
                         >
-                        <Link className="sidebar-link cursor-pointer" href={link.route}>
+                        <Link className="side-bar-link cursor-pointer" href={link.route}>
                           <Image 
                             src={link.icon}
                             alt="logo"
-                            width={24}
-                            height={24}
+                            width={20}
+                            height={20}
                           />
                           {link.label}
                         </Link>
