@@ -22,12 +22,12 @@ declare type AddImageParams = {
   image: {
     title: string;
     publicId: string;
-    transformationType: string;
+    editingType: string;
     width: number;
     height: number;
     config: any;
     secureURL: string;
-    transformationURL: string;
+    editingURL: string;
     aspectRatio: string | undefined;
     prompt: string | undefined;
     color: string | undefined;
@@ -41,12 +41,12 @@ declare type UpdateImageParams = {
     _id: string;
     title: string;
     publicId: string;
-    transformationType: string;
+    editingType: string;
     width: number;
     height: number;
     config: any;
     secureURL: string;
-    transformationURL: string;
+    editingURL: string;
     aspectRatio: string | undefined;
     prompt: string | undefined;
     color: string | undefined;
@@ -55,7 +55,7 @@ declare type UpdateImageParams = {
   path: string;
 };
 
-declare type Transformations = {
+declare type Edits = {
   restore?: boolean;
   fillBackground?: boolean;
   remove?: {
@@ -71,15 +71,15 @@ declare type Transformations = {
   removeBackground?: boolean;
 };
 
-// TRANSACTION PARAMS
-declare type CheckoutTransactionParams = {
+// EDITING PARAMS
+declare type CheckoutEditingParams = {
   plan: string;
   credits: number;
   amount: number;
   buyerId: string;
 };
 
-declare type CreateTransactionParams = {
+declare type CreateEditingParams = {
   stripeId: string;
   amount: number;
   credits: number;
@@ -88,7 +88,7 @@ declare type CreateTransactionParams = {
   createdAt: Date;
 };
 
-declare type TransformationTypeKey =
+declare type EditingTypeKey =
   | "restore"
   | "fill"
   | "remove"
@@ -114,25 +114,25 @@ declare type RemoveUrlQueryParams = {
 };
 
 declare type SearchParamProps = {
-  params: { id: string; type: TransformationTypeKey };
+  params: { id: string; type: EditingTypeKey };
   searchParams: { [key: string]: string | string[] | undefined };
 };
 
-declare type TransformationFormProps = {
+declare type EditingFormProps = {
   action: "Add" | "Update";
   userId: string;
-  type: TransformationTypeKey;
+  type: EditingTypeKey;
   creditBalance: number;
   data?: IImage | null;
-  config?: Transformations | null;
+  config?: Edits | null;
 };
 
-declare type TransformedImageProps = {
+declare type EditedImageProps = {
   image: any;
   type: string;
   title: string;
-  transformationConfig: Transformations | null;
-  isTransforming: boolean;
+  editConfig: Edits | null;
+  isEditing: boolean;
   hasDownload?: boolean;
-  setIsTransforming?: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsEditinging?: React.Dispatch<React.SetStateAction<boolean>>;
 };
