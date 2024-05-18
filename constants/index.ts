@@ -9,11 +9,11 @@ export const navLinks = [
     route: "/editing/add/restore",
     icon: "/assets/icons/image.svg",
   },
-  // {
-  //   label: "Generative Fill",
-  //   route: "/editing/add/fill",
-  //   icon: "/assets/icons/stars.svg",
-  // },
+  {
+    label: "Generative Fill",
+    route: "/editing/add/fill",
+    icon: "/assets/icons/stars.svg",
+  },
   {
     label: "Object Remove",
     route: "/editing/add/remove",
@@ -119,7 +119,7 @@ export const plans = [
   },
 ];
 
-export const transformationTypes = {
+export const editTypes = {
   restore: {
     type: "restore",
     title: "Restore Image",
