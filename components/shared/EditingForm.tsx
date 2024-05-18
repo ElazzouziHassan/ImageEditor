@@ -30,6 +30,8 @@ import {
 import { CustomField } from "./CustomField"
 import { AspectRatioKey, debounce, deepMergeObjects } from "@/lib/utils"
 import { useRouter } from "next/navigation"
+import EditedImage from "./EditedImage"
+import MediaUploader from "./MediaUploader"
 
 export const formSchema = z.object({
   title: z.string(),
@@ -67,8 +69,38 @@ const EditingForm = ({ action, data = null,  userId, type, creditBalance, config
  
   // 2. Define a submit handler.
   function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values)
+    setIsSubmitting(true);
   }
+
+  const onSelectFieldHandler = (value: string, onChangeField: (value: string) => void) => {
+    const imageSize = aspectRatioOptions[value as AspectRatioKey]
+
+    setImage((prevState: any) => ({
+      ...prevState,
+      aspectRatio: imageSize.aspectRatio,
+      width: imageSize.width,
+      height: imageSize.height,
+    }))
+
+    setNewEditing(editingType.config);
+
+    return onChangeField(value)
+  }
+
+  const onInputChangeHandler = (fieldName: string, value: string, type: string, onChangeField: (value: string) => void) => {
+    debounce(() => {
+      setNewEditing((prevState: any) => ({
+        ...prevState,
+        [type]: {
+          ...prevState?.[type],
+          [fieldName === 'prompt' ? 'prompt' : 'to' ]: value 
+        }
+      }))
+    }, 1000)();
+      
+    return onChangeField(value)
+  }
+
 
   return (
     <Form {...form}>
@@ -80,7 +112,90 @@ const EditingForm = ({ action, data = null,  userId, type, creditBalance, config
           className="w-full"
           render={({ field }) => <Input {...field} className="input-field" />}
         />
-        
+        {type === 'fill' && (
+            <CustomField
+              control={form.control}
+              name="aspectRatio"
+              formLabel="Aspect Ratio"
+              className="w-full"
+              render={({ field }) => (
+                <Select
+                  onValueChange={(value) => onSelectFieldHandler(value, field.onChange)}
+                  value={field.value}
+                >
+                  <SelectTrigger className="select-field">
+                    <SelectValue placeholder="Select size" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {Object.keys(aspectRatioOptions).map((key) => (
+                      <SelectItem key={key} value={key} className="select-item">
+                        {aspectRatioOptions[key as AspectRatioKey].label}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+              </Select>
+            )}  
+          />
+        )}
+        {(type === 'remove' || type === 'recolor') && (
+          <div className="prompt-field">
+            <CustomField 
+              control={form.control}
+              name="prompt"
+              formLabel={
+                type === 'remove' ? 'Object to remove' : 'Object to recolor'
+              }
+              className="w-full"
+              render={({ field }) => (
+                <Input 
+                  value={field.value}
+                  className="input-field"
+                  onChange={(e) => onInputChangeHandler(
+                    'prompt',
+                    e.target.value,
+                    type,
+                    field.onChange
+                  )}
+                />
+              )}
+            />
+
+            {type === 'recolor' && (
+              <CustomField 
+                control={form.control}
+                name="color"
+                formLabel="Replacement Color"
+                className="w-full"
+                render={({ field }) => (
+                  <Input 
+                    value={field.value}
+                    className="input-field"
+                    onChange={(e) => onInputChangeHandler(
+                      'color',
+                      e.target.value,
+                      'recolor',
+                      field.onChange
+                    )}
+                  />
+                )}
+              />
+            )}
+          </div>
+        )}
+
+        <div className="media-uploader-field">
+          <CustomField 
+            control={form.control}
+            name="publicId"
+            className="flex size-full flex-col"
+            render={({ field }) => (
+              <MediaUploader />
+            )}
+          />
+
+          <EditedImage />
+        </div>
+
       </form>
     </Form>
   )
