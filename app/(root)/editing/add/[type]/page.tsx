@@ -28,7 +28,6 @@ const AddEditsType = async ({ params: { type } }: SearchParamProps) => {
           userId={user._id}
           type={edit.type as EditingTypeKey}
           creditBalance={user.creditBalance}
-
         />
       </section>
     </>
