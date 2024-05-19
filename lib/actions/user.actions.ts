@@ -79,7 +79,7 @@ export async function updateCoins(userId: string, freeCoins: number) {
 
     const updatedUserCoins = await User.findOneAndUpdate(
       { _id: userId },
-      { $inc: { coinsBalance: freeCoins }},
+      { $inc: { creditBalance: freeCoins }},
       { new: true }
     )
 
