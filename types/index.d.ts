@@ -134,5 +134,5 @@ declare type EditedImageProps = {
   editConfig: Edits | null;
   isEditing: boolean;
   hasDownload?: boolean;
-  setIsEditinging?: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsEditing?: React.Dispatch<React.SetStateAction<boolean>>;
 };
