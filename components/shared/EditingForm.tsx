@@ -32,6 +32,9 @@ import { AspectRatioKey, debounce, deepMergeObjects } from "@/lib/utils"
 import { useRouter } from "next/navigation"
 import EditedImage from "./EditedImage"
 import MediaUploader from "./MediaUploader"
+import { updateCoins } from "@/lib/actions/user.actions"
+import { getCldImageUrl } from "next-cloudinary"
+import { addImage, updateImage } from "@/lib/actions/image.actions"
 
 export const formSchema = z.object({
   title: z.string(),
@@ -68,8 +71,68 @@ const EditingForm = ({ action, data = null,  userId, type, creditBalance, config
   })
  
   // 2. Define a submit handler.
-  function onSubmit(values: z.infer<typeof formSchema>) {
+  async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsSubmitting(true);
+    if(data || image) {
+      const editingUrl = getCldImageUrl({
+        width: image?.width,
+        height: image?.height,
+        src: image?.publicId,
+        ...editingConfig
+      })
+
+      const imageData = {
+        title: values.title,
+        publicId: image?.publicId,
+        editingType: type,
+        width: image?.width,
+        height: image?.height,
+        config: editingConfig,
+        secureURL: image?.secureURL,
+        editingURL: editingUrl,
+        aspectRatio: values.aspectRatio,
+        prompt: values.prompt,
+        color: values.color,
+      }
+
+      if(action === 'Add') {
+        try {
+          const newImage = await addImage({
+            image: imageData,
+            userId,
+            path: '/'
+          })
+
+          if(newImage) {
+            form.reset()
+            setImage(data)
+            router.push(`/editing/${newImage._id}`)
+          }
+        } catch (error) {
+          console.log(error);
+        }
+      }
+
+      if(action === 'Update') {
+        try {
+          const updatedImage = await updateImage({
+            image: {
+              ...imageData,
+              _id: data._id
+            },
+            userId,
+            path: `/editing/${data._id}`
+          })
+
+          if(updatedImage) {
+            router.push(`/editing/${updatedImage._id}`)
+          }
+        } catch (error) {
+          console.log(error);
+        }
+      }
+    }
+    setIsSubmitting(false)
   }
 
   const onSelectFieldHandler = (value: string, onChangeField: (value: string) => void) => {
@@ -99,6 +162,19 @@ const EditingForm = ({ action, data = null,  userId, type, creditBalance, config
     }, 1000)();
       
     return onChangeField(value)
+  }
+  const onEditHandler = async () => {
+    setIsEditing(true)
+
+    setEditingConfig(
+      deepMergeObjects(newEditing, editingConfig)
+    )
+
+    setNewEditing(null)
+
+    startTransition(async () => {
+      await updateCoins(userId, creditFee)
+    })
   }
 
 
@@ -189,13 +265,42 @@ const EditingForm = ({ action, data = null,  userId, type, creditBalance, config
             name="publicId"
             className="flex size-full flex-col"
             render={({ field }) => (
-              <MediaUploader />
+              <MediaUploader 
+                onValueChange={field.onChange}
+                setImage={setImage}
+                publicId={field.value}
+                image={image}
+                type={type}
+              />
             )}
           />
 
-          <EditedImage />
+          <EditedImage
+            image={image}
+            type={type}
+            title={form.getValues().title}
+            isEditing={isEditing}
+            setIsEditing={setIsEditing}
+            editConfig={editingConfig}
+          />
         </div>
-
+        <div className="flex flex-col gap-4">
+          <Button 
+            type="button"
+            className="submit-button capitalize"
+            disabled={isEditing || newEditing === null}
+            onClick={onEditHandler}
+          >
+            {isEditing ? 'Editing...' : 'Apply Editing'}
+          </Button>
+          <Button 
+            type="submit"
+            className="submit-button capitalize"
+            disabled={isSubmitting}
+          >
+            {isSubmitting ? 'Submitting...' : 'Save Image'}
+          </Button>
+        </div>
       </form>
     </Form>
   )
