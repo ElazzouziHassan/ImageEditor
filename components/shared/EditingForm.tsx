@@ -23,7 +23,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { 
   aspectRatioOptions, 
-  creditFee, 
+  CoinsFree, 
   defaultValues, 
   editTypes 
 } from "@/constants"
@@ -35,6 +35,7 @@ import MediaUploader from "./MediaUploader"
 import { updateCoins } from "@/lib/actions/user.actions"
 import { getCldImageUrl } from "next-cloudinary"
 import { addImage, updateImage } from "@/lib/actions/image.actions"
+import CoinsModal from "./CoinsModal"
 
 export const formSchema = z.object({
   title: z.string(),
@@ -173,14 +174,20 @@ const EditingForm = ({ action, data = null,  userId, type, creditBalance, config
     setNewEditing(null)
 
     startTransition(async () => {
-      await updateCoins(userId, creditFee)
+      await updateCoins(userId, CoinsFree)
     })
   }
 
+  useEffect(() => {
+    if(image && (type === 'restore' || type === 'removeBackground')) {
+      setNewEditing(editingType.config)
+    }
+  }, [image, editingType.config, type])
 
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+      {creditBalance < Math.abs(CoinsFree) && <CoinsModal />}
       <CustomField 
           control={form.control}
           name="title"
