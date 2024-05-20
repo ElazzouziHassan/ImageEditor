@@ -17,7 +17,7 @@ const TransactionSchema = new Schema({
   plan: {
     type: String,
   },
-  credits: {
+  coins: {
     type: Number,
   },
   buyer: {
