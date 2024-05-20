@@ -1,10 +1,19 @@
-import React from 'react'
+import Collection from '@/components/shared/Collection'
+import React, { Fragment } from 'react'
 
-function Home() {
+const Home = async () => {
+
   return (
-    <div>
-      <p>Home</p>
-    </div>
+    <Fragment>
+      <section>
+        <h1 >
+          Home page
+        </h1>
+      </section>
+      <section className="sm:mt-12">
+        <Collection/>
+      </section>
+    </Fragment>
   )
 }
 
