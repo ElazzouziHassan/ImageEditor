@@ -73,13 +73,13 @@ export async function deleteUser(clerkId: string) {
 }
 
 // USE COINS :
-export async function updateCoins(userId: string, freeCoins: number) {
+export async function updateCoins(userId: string, CoinsFree: number) {
   try {
     await connectToDatabase();
 
     const updatedUserCoins = await User.findOneAndUpdate(
       { _id: userId },
-      { $inc: { creditBalance: freeCoins }},
+      { $inc: { creditBalance: CoinsFree }},
       { new: true }
     )
 
