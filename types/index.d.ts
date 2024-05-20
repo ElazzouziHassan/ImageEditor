@@ -74,7 +74,7 @@ declare type Edits = {
 // EDITING PARAMS
 declare type CheckoutEditingParams = {
   plan: string;
-  credits: number;
+  coins: number;
   amount: number;
   buyerId: string;
 };
@@ -82,7 +82,7 @@ declare type CheckoutEditingParams = {
 declare type CreateEditingParams = {
   stripeId: string;
   amount: number;
-  credits: number;
+  coins: number;
   plan: string;
   buyerId: string;
   createdAt: Date;
