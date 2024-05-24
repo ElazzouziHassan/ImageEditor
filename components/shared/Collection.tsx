@@ -43,9 +43,8 @@ export const Collection = ({
   return (
     <>
       <div className="collection-heading">
-        <h2 className="h2-bold text-dark-600">Recent Edits</h2>
-        {/* to be designed later */}
-        <span>Download</span>
+        <h2 className="h2-bold text-dark-600">Recently Edited Images</h2>
+        {/* <span>Download</span> */}
       </div>
 
       {images.length > 0 ? (
