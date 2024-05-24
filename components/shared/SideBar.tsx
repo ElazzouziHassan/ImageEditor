@@ -25,7 +25,7 @@ const Sidebar = () => {
 
                 return (
                   <li key={link.route} className={`side-bar-nav_element group ${
-                    isActive ? 'bg-purple-gradient text-white' : 'text-gray-700'
+                    isActive ? 'bg-purple-gradient text-black' : 'text-gray-700'
                   }`}>
                     <Link className="side-bar-link" href={link.route}>
                       <Image 
@@ -49,7 +49,7 @@ const Sidebar = () => {
 
                 return (
                   <li key={link.route} className={`side-bar-nav_element group ${
-                    isActive ? 'bg-purple-gradient text-white' : 'text-gray-700'
+                    isActive ? 'bg-purple-gradient text-black' : 'text-gray-700'
                   }`}>
                     <Link className="side-bar-link" href={link.route}>
                       <Image 
