@@ -296,6 +296,11 @@
     @apply flex items-center gap-2 md:py-2;
   }
 
+  .spacer{
+    height: 2px;
+    border: solid 1.5px gray;
+  }
+
   .side-bar-nav {
     @apply h-full flex-col justify-between md:flex md:gap-4;
   }
