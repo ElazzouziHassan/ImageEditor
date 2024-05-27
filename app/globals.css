@@ -236,11 +236,11 @@
     @apply w-full rounded-[16px] border-2 border-purple-200/20 bg-white p-5 shadow-lg shadow-purple-200/10 md:px-6 md:py-8;
   }
 
-  .transformation-grid {
+  .editing-grid {
     @apply grid h-fit min-h-[200px] grid-cols-1 gap-5 py-8 md:grid-cols-2;
   }
 
-  .transformation-original_image {
+  .editing-original_image {
     @apply h-fit min-h-72 w-full rounded-[10px] border border-dashed bg-purple-100/20 object-cover p-2;
   }
 

@@ -226,7 +226,7 @@ const EditingForm = ({ action, data = null,  userId, type, creditBalance, config
               control={form.control}
               name="prompt"
               formLabel={
-                type === 'remove' ? 'Object to remove' : 'Object to recolor'
+                type === 'remove' ? 'Object to remove' : 'Prompt'
               }
               className="w-full"
               render={({ field }) => (
@@ -247,7 +247,7 @@ const EditingForm = ({ action, data = null,  userId, type, creditBalance, config
               <CustomField 
                 control={form.control}
                 name="color"
-                formLabel="Replacement Color"
+                formLabel="Color"
                 className="w-full"
                 render={({ field }) => (
                   <Input 

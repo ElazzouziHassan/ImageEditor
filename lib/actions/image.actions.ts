@@ -15,7 +15,6 @@ const populateUser = (query: any) => query.populate({
   select: '_id firstName lastName clerkId'
 })
 
-// ADD IMAGE
 export async function addImage({ image, userId, path }: AddImageParams) {
   try {
     await connectToDatabase();
