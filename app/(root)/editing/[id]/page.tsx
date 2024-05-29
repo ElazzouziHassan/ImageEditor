@@ -5,6 +5,8 @@ import { Button } from "@/components/ui/button";
 import { getImageById } from "@/lib/actions/image.actions";
 import { auth } from "@clerk/nextjs/server";
 import Link from "next/link";
+import Image from "next/image";
+import { getImageSize } from "@/lib/utils";
 
 
 const ImageDetails = async ({ params: { id } }: SearchParamProps) => {
@@ -54,14 +56,13 @@ const ImageDetails = async ({ params: { id } }: SearchParamProps) => {
         <div className="editing-grid">
           <div className="flex flex-col gap-4">
             <h3 className="h3-bold text-dark-600">Original Image</h3>
-            {/* uncomment this when you fix the res.cloudinary config errors */}
-            {/* <Image
+            <Image
               width={getImageSize(image.editingType, image, "width")}
               height={getImageSize(image.editingType, image, "height")}
               src={image.secureURL}
               alt="image"
               className="editing-original_image"
-            /> */}
+            />
           </div>
           <EditedImage
             image={image}
