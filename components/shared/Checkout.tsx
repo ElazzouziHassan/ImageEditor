@@ -3,8 +3,8 @@
 import { loadStripe } from "@stripe/stripe-js";
 import { useEffect } from "react";
 import { Button } from "../ui/button";
-import { toast, useToast } from "../ui/use-toast";
 import { checkoutCoins } from "@/lib/actions/transaction.actions";
+import { useToast } from "@/components/ui/use-toast";
 
 const Checkout = (
   {
