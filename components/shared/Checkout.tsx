@@ -2,24 +2,21 @@
 
 import { loadStripe } from "@stripe/stripe-js";
 import { useEffect } from "react";
+import { useToast } from "@/components/ui/use-toast";
 import { Button } from "../ui/button";
 import { checkoutCoins } from "@/lib/actions/transaction.actions";
-import { useToast } from "@/components/ui/use-toast";
 
-const Checkout = (
-  {
-    plan,
-    amount,
-    coins,
-    buyerId,
-  }: {
-    plan: string;
-    amount: number;
-    coins: number;
-    buyerId: string;
-  }
-) => {
-  
+const Checkout = ({
+  plan,
+  amount,
+  coins,
+  buyerId,
+}: {
+  plan: string;
+  amount: number;
+  coins: number;
+  buyerId: string;
+}) => {
   const { toast } = useToast();
 
   useEffect(() => {
@@ -46,7 +43,7 @@ const Checkout = (
       });
     }
   }, []);
-  
+
   const onCheckout = async () => {
     const transaction = {
       plan,
