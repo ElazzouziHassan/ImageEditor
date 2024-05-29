@@ -23,7 +23,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { 
   aspectRatioOptions, 
-  CoinsFree, 
+  Coins, 
   defaultValues, 
   editTypes 
 } from "@/constants"
@@ -174,7 +174,7 @@ const EditingForm = ({ action, data = null,  userId, type, creditBalance, config
     setNewEditing(null)
 
     startTransition(async () => {
-      await updateCoins(userId, CoinsFree)
+      await updateCoins(userId, Coins)
     })
   }
 
@@ -187,7 +187,7 @@ const EditingForm = ({ action, data = null,  userId, type, creditBalance, config
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-      {creditBalance < Math.abs(CoinsFree) && <CoinsModal />}
+      {creditBalance < Math.abs(Coins) && <CoinsModal />}
       <CustomField 
           control={form.control}
           name="title"

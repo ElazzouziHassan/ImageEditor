@@ -44,17 +44,17 @@ export const navLinks = [
 export const plans = [
   {
     _id: 1,
-    name: "Free",
-    icon: "/assets/icons/free-plan.svg",
-    price: 0,
-    coins: 20,
+    name: "BASIC PLAN",
+    icon: "/assets/icons/coins.png",
+    price: 4.99,
+    coins: 100,
     inclusions: [
       {
-        label: "20 Free coins",
+        label: "100 coins",
         isIncluded: true,
       },
       {
-        label: "Basic Access to Services",
+        label: "Full Access to Services",
         isIncluded: true,
       },
       {
@@ -69,13 +69,13 @@ export const plans = [
   },
   {
     _id: 2,
-    name: "Pro Package",
-    icon: "/assets/icons/free-plan.svg",
-    price: 40,
-    coins: 120,
+    name: "GOLDEN PLAN",
+    icon: "/assets/icons/coins.png",
+    price: 9.99,
+    coins: 300,
     inclusions: [
       {
-        label: "120 coins",
+        label: "300 coins",
         isIncluded: true,
       },
       {
@@ -94,13 +94,13 @@ export const plans = [
   },
   {
     _id: 3,
-    name: "Premium Package",
-    icon: "/assets/icons/free-plan.svg",
-    price: 199,
-    coins: 2000,
+    name: "PREMIUM PLAN",
+    icon: "/assets/icons/coins.png",
+    price: 14.99,
+    coins: 500,
     inclusions: [
       {
-        label: "2000 coins",
+        label: "500 coins",
         isIncluded: true,
       },
       {
@@ -190,4 +190,4 @@ export const defaultValues = {
   publicId: "",
 };
 
-export const CoinsFree = -1;
+export const Coins = -1;

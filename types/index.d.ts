@@ -71,15 +71,15 @@ declare type Edits = {
   removeBackground?: boolean;
 };
 
-// EDITING PARAMS
-declare type CheckoutEditingParams = {
+// TRANSACTION PARAMS
+declare type CheckoutTransactionParams = {
   plan: string;
   coins: number;
   amount: number;
   buyerId: string;
 };
 
-declare type CreateEditingParams = {
+declare type CreateTransactionParams = {
   stripeId: string;
   amount: number;
   coins: number;
