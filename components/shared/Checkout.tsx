@@ -3,7 +3,7 @@
 import { loadStripe } from "@stripe/stripe-js";
 import { useEffect } from "react";
 import { Button } from "../ui/button";
-import { useToast } from "../ui/use-toast";
+import { toast, useToast } from "../ui/use-toast";
 import { checkoutCoins } from "@/lib/actions/transaction.actions";
 
 const Checkout = (
