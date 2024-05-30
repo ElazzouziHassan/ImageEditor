@@ -19,7 +19,7 @@ const Coins = async() => {
   return (
     <>
       <Header
-        title="Buy Coins"
+        title="BUY MORE COINS"
         subtitle="Running of coins! You can upgrade to one of the following packages and keep editing your images"
       />
       <section>
