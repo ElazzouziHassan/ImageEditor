@@ -37,8 +37,8 @@ export const CoinsModal = () => {
           </div>
 
           <Image
-            src="/assets/images/stacked-coins.png"
-            alt="credit coins"
+            src="/assets/icons/stacked-of-coins.png"
+            alt="coins"
             width={462}
             height={122}
           />
@@ -60,7 +60,7 @@ export const CoinsModal = () => {
             No, Cancel
           </AlertDialogCancel>
           <AlertDialogAction
-            className="button w-full bg-purple-gradient  bg-cover"
+            className="button w-full"
             onClick={() => router.push("/coins")}
           >
             Yes, Proceed
