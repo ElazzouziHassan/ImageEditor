@@ -209,7 +209,7 @@
   }
 
   .home-heading {
-    @apply h1-semibold max-w-[100vw] flex-wrap text-center text-white shadow-sm;
+    @apply h1-semibold max-w-[100vw] flex-wrap text-center text-black shadow-sm;
   }
 
   .coins-list {

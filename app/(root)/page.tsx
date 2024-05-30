@@ -14,14 +14,13 @@ const Home = async ({ searchParams }: SearchParamProps) => {
   const images = await getAllImages({ page, searchQuery})
   return (
     <Fragment>
-      {/* uncomment this section for header */}
-      {/* <section className='home'>
+      <section className='home'>
         <h1 className='home-heading'>
-          Smart Canvas
+          SMART CANVAS
         </h1>
         <Search />
-        <span className='mb-5 text-white'>High-quality photos, AI Images, Next Generation Of Image Editors</span>
-      </section> */}
+        <span className='mb-5 text-black'>High-quality photos, AI Images, Next Generation Of Image Editors</span>
+      </section>
       <section>
         <ul className="flex-center w-full gap-20">
             {navLinks.slice(1, 5).map((link) => (
