@@ -23,7 +23,7 @@ const EditedImage = ({ image, type, title, editConfig, isEditing, setIsEditing, 
     <div className="flex flex-col gap-4">
       <div className="flex-between">
         <h3 className="h3-bold text-dark-600">
-          The Edited Image
+          EDITED IMAGE
         </h3>
 
         {hasDownload && (
@@ -32,10 +32,10 @@ const EditedImage = ({ image, type, title, editConfig, isEditing, setIsEditing, 
             onClick={downloadHandler}
           >
             <Image 
-              src="/assets/icons/download.svg"
+              src="/assets/icons/download.png"
               alt="Download"
-              width={24}
-              height={24}
+              width={30}
+              height={30}
               className="pb-[6px]"
             />
           </button>
@@ -51,7 +51,7 @@ const EditedImage = ({ image, type, title, editConfig, isEditing, setIsEditing, 
             alt={image.title}
             sizes={"(max-width: 767px) 100vw, 50vw"}
             placeholder={dataUrl as PlaceholderValue}
-            className="transformed-image"
+            className="edited-image"
             onLoad={() => {
               setIsEditing && setIsEditing(false);
             }}
@@ -77,7 +77,7 @@ const EditedImage = ({ image, type, title, editConfig, isEditing, setIsEditing, 
         </div>
       ): (
         <div className="transformed-placeholder">
-          The Edited Image
+          EDITED IMAGE
         </div>
       )}
     </div>
