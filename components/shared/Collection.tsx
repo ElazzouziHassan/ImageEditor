@@ -43,8 +43,7 @@ export const Collection = ({
   return (
     <>
       <div className="collection-heading">
-        <h2 className="h2-bold text-dark-600">Recently Edited Images</h2>
-        {/* <span>Download</span> */}
+        <h2 className="h2-bold text-dark-500">RECENTLY EDITED IMAGES</h2>
       </div>
 
       {images.length > 0 ? (
@@ -55,7 +54,7 @@ export const Collection = ({
         </ul>
       ) : (
         <div className="collection-empty">
-          <p className="p-20-semibold">Empty List</p>
+          <p className="p-20-semibold">EMPTY LIST !</p>
         </div>
       )}
 
